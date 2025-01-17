@@ -18,13 +18,16 @@ public class TracingAgent {
         Tracing tracing;
         switch (agentArgs) {
             case "opentelemetry":
+                System.out.println("Initializing OpenTelemetry tracing.");
                 tracing = new OpenTelemetryTracing();
                 break;
             default:
+                System.out.println("No tracing type specified. Initializing with NoTracing.");
                 // assuming no distributed tracing by default
                 tracing = new Tracing.NoTracing();
                 break;
         }
         tracing.initialize();
+        System.out.println("Tracing initialized successfully.");
     }
 }
